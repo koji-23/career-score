@@ -55,8 +55,7 @@ export function calculateScore(answers: Answer[]): DiagnosisResult {
 
   // 最も弱いカテゴリを特定
   const weakestCategory = (Object.entries(categoryScores).reduce(
-    (min: string, [key: [string, number]) =>
-      value < categoryScores[min as keyof CategoryScore] ? key : min,
+    (min: string, [key, value]: [string, number]) =>      value < categoryScores[min as keyof CategoryScore] ? key : min,
     'market_value'
   ) )as keyof CategoryScore;
 
