@@ -76,13 +76,13 @@ export default function PrivacyPolicy() {
                 個人情報の取り扱いに関するご質問は、以下までご連絡ください。
               </p>
               <div className="mt-4 bg-gray-100 p-4 rounded">
-                <p className="font-semibold">キャリアスコア診断 運営</p>
-                <p className="mt-2">メール: [お問い合わせ先メールアドレス]</p>
+                <p className="font-semibold">Growth Empowerment</p>
+                <p className="mt-2">メール: info@growth-empowerment.jp</p>
               </div>
             </section>
 
             <section className="border-t border-gray-300 pt-6">
-              <p className="text-sm text-gray-600">最終更新日: 2025年1月26日</p>
+              <p className="text-sm text-gray-600">最終更新日: 2026年1月27日</p>
             </section>
           </div>
 
