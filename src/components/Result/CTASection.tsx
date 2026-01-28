@@ -1,65 +1,84 @@
+import { DiagnosisResult } from '../../types';
+
 interface CTASectionProps {
-  score: number;
-  marketValue: number;
-  preparation: number;
-  activityQuality: number;
+  result: DiagnosisResult;
 }
 
-export default function CTASection({ score, marketValue, preparation, activityQuality }: CTASectionProps) {
-  const getRecommendation = () => {
-    if (score >= 75) {
-      return {
-        title: "今すぐ行動を起こしましょう！",
-        items: [
-          "市場価値が高い今がチャンス - 積極的に求人に応募",
-          "準備も整っているので、面接の予定を組みましょう",
-          "活動の質を維持しながら、理想の企業を探しましょう"
-        ]
-      };
-    } else if (score >= 50) {
-      return {
-        title: "準備を整えて転職を成功させましょう",
-        items: [
-          marketValue < 70 && "スキルアップや実績作りで市場価値を高めましょう",
-          preparation < 70 && "職務経歴書や面接対策の準備を進めましょう",
-          activityQuality < 70 && "企業研究を深め、質の高い応募を心がけましょう"
-        ].filter(Boolean)
-      };
-    } else {
-      return {
-        title: "焦らず、着実に準備を進めましょう",
-        items: [
-          "まずは現職でのスキルアップに注力",
-          "転職市場や求人情報のリサーチを始めましょう",
-          "職務経歴書の作成や自己分析から始めてみましょう"
-        ]
-      };
-    }
-  };
+export default function CTASection({ result }: CTASectionProps) {
+  const calendarUrl = 'https://calendar.app.google/sXdCjkKLLJgEYUK97';
 
-  const recommendation = getRecommendation();
+  const handleReservation = () => {
+    window.open(calendarUrl, '_blank');
+  };
 
   return (
     <div className="gradient-bg text-white rounded-xl p-8 shadow-lg">
-      <div className="max-w-3xl mx-auto">
-        <h3 className="text-2xl font-bold mb-4">{recommendation.title}</h3>
-        <div className="space-y-3 mb-6">
-          {recommendation.items.map((item, index) => (
-            <div key={index} className="flex items-start">
-              <span className="text-orange mr-2">✓</span>
-              <p className="text-lg">{item}</p>
+      <div className="text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          あなた専用の戦略を
+          <br />
+          30分無料相談で作成します
+        </h2>
+
+        <div className="max-w-2xl mx-auto mb-8">
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-3xl mb-2">✅</div>
+              <p className="font-semibold">診断結果の詳細解説</p>
             </div>
-          ))}
-        </div>
-        <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm">
-          <p className="text-sm mb-4">
-            💡 診断結果をもとに、あなた専用の戦略をご提案します。
-            <br />
-            無料相談（30分）で、次のステップを一緒に考えましょう。
-          </p>
-          <button className="bg-orange hover:bg-orange-dark text-white font-bold py-3 px-8 rounded-lg transition-colors">
-            無料相談を予約する
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-3xl mb-2">🎯</div>
+              <p className="font-semibold">課題を解決する具体策</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-3xl mb-2">🤝</div>
+              <p className="font-semibold">最適な人材紹介会社のご紹介</p>
+            </div>
+          </div>
+
+          <button
+            onClick={handleReservation}
+            className="btn-primary text-xl px-12 py-6 shadow-2xl"
+          >
+            今すぐ予約する（完全無料）
           </button>
+
+          <p className="text-sm text-gray-200 mt-6">
+            ※予約画面の「詳細」欄に診断結果
+            <br />
+            （スコア: {result.totalScore}点 / ランク: {result.rank}）
+            <br />
+            をご記入ください
+          </p>
+        </div>
+
+        <div className="border-t border-white/20 pt-6 max-w-2xl mx-auto">
+          <h3 className="text-xl font-bold mb-4">相談後の流れ</h3>
+          <div className="grid md:grid-cols-3 gap-4 text-sm">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="font-bold mb-2">STEP 1</div>
+              <p>診断結果を基に<br />課題を明確化</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="font-bold mb-2">STEP 2</div>
+              <p>あなたに最適な<br />人材紹介会社をご紹介</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div className="font-bold mb-2">STEP 3</div>
+              <p>プロのサポートで<br />転職成功へ</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 text-xs text-gray-300 max-w-2xl mx-auto">
+          <p className="mb-2">
+            ご予約いただいた情報は、相談対応および
+            <strong className="text-white">人材紹介会社への情報共有</strong>
+            のみに使用します。
+          </p>
+          <a href="/privacy" className="text-orange hover:text-orange-light underline transition">
+            プライバシーポリシー
+          </a>
         </div>
       </div>
     </div>
