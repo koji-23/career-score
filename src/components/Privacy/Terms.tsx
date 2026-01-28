@@ -167,7 +167,7 @@
               </p>
               <div className="bg-gray-100 p-4 rounded">
                 <p className="font-semibold">Growth Empowerment</p>
-                <p className="mt-2">メール: info@growth-empowerment.jp</p>
+                <p className="mt-2">メール: growth.empowermen@gmail.com</p>
               </div>
             </section>
 
