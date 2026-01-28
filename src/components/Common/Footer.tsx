@@ -1,4 +1,4 @@
-export default function Footer() {
+キャリアスコア診断あなたの転職成功確率を診断し、最適な戦略をご提案しますサービス無料診断無料相談（分）人材紹介会社のご紹介リンクプライバシーポリシー利用規約©export default function Footer() {
       return (
               <footer className="bg-navy text-white py-8 mt-20">
                     <div className="max-w-6xl mx-auto px-4">
